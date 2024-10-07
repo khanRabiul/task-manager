@@ -1,14 +1,15 @@
-import Footer from "../shared/Footer"
-import Header from "../shared/Header"
+import Footer from "../shared/Footer";
+import Header from "../shared/Header";
+import TaskBoard from "./TaskBoard";
 
 const TaskBoardLayout = () => {
   return (
     <>
-    <Header />
-    {/* main  */}
-    <Footer />
+      <Header />
+      <TaskBoard />
+      <Footer />
     </>
-  )
-}
+  );
+};
 
-export default TaskBoardLayout
+export default TaskBoardLayout;
