@@ -10,23 +10,19 @@ const TaskModal = () => {
     isFavourite: false,
   });
 
-  const handelChange = (e)=> {
+  const handleChange = (e) => {
     const name = e.target.name;
     let value = e.target.value;
 
-    if(value === "tags") {
-        value = value.split(",")
+    if (value === "tags") {
+      value = value.split(",");
     }
 
-    setTask({...task, 
-        [name]: value,
-
-    })
-
-  }
+    setTask({ ...task, [name]: value });
+  };
   return (
-    <section className="inset-0 flex justify-center h-screen items-center bg-gray-700 bg-opacity-80">
-      <div className="bg-slate-800 rounded-md p-8 w-2/3">
+    <section className="flex justify-center h-screen items-center bg-gray-700 bg-opacity-80">
+      <div className="bg-slate-800 rounded-md w-full p-4 md:p-8 md:w-2/3">
         <form>
           <div className="mb-10">
             <h2 className="text-center text-3xl font-semibold ">
@@ -43,7 +39,7 @@ const TaskModal = () => {
                 name="title"
                 id="title"
                 value={task.title}
-                onChange={handelChange}
+                onChange={handleChange}
                 className="w-full rounded-sm px-2 py-2 text-slate-900 text-xl"
               />
             </div>
@@ -58,7 +54,7 @@ const TaskModal = () => {
                 name="description"
                 id="description"
                 value={task.description}
-                onChange={handelChange}
+                onChange={handleChange}
                 rows="6"
                 className="w-full rounded-sm px-2 py-2 text-slate-900 text-xl"
               />
@@ -73,8 +69,8 @@ const TaskModal = () => {
                   type="text"
                   name="tags"
                   id="tags"
-                  value={task.tags.join(",")}
-                  onChange={handelChange}
+                  /*  value={task.tags.join(",")} */
+                  onChange={handleChange}
                   className="w-full rounded-sm px-2 py-2 text-slate-900 text-xl"
                 />
               </div>
@@ -89,10 +85,10 @@ const TaskModal = () => {
                   name="priority"
                   id="priority"
                   value={task.priority}
-                  onChange={handelChange}
+                  onChange={handleChange}
                   className="w-full rounded-sm px-2 py-2 text-slate-900 text-xl"
                 >
-                  <option value="Low">Select Priority</option>
+                  <option value="">Select Priority</option>
                   <option value="Low">Low</option>
                   <option value="Medium">Medium</option>
                   <option value="High">High</option>
