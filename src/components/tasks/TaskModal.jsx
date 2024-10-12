@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 
-const TaskModal = () => {
+const TaskModal = ({handleClose, handleAddTask}) => {
   const [task, setTask] = useState({
     id: crypto.randomUUID(),
     title: "",
@@ -14,16 +15,29 @@ const TaskModal = () => {
     const name = e.target.name;
     let value = e.target.value;
 
-    if (value === "tags") {
-      value = value.split(",");
+    if (name === "tags") {
+      value = value.split(",").map(tag => tag.trim());
     }
 
     setTask({ ...task, [name]: value });
   };
+
+const handleSubmit = (e) => {
+e.preventDefault();
+// Capture data when submit
+// const taskData = {title, description, tags, priority};
+// Send task data back to TaskBoard.jsx
+// handleAddTask(taskData);
+handleAddTask(task)
+handleClose();
+}
+
   return (
     <section className="fixed inset-0 flex justify-center h-screen items-center bg-gray-700 bg-opacity-80 z-50">
       <div className="bg-slate-800 rounded-md w-full p-4 md:p-8 md:w-2/3">
-        <form>
+        <form 
+        onSubmit={handleSubmit}
+        >
           <div className="mb-10">
             <h2 className="text-center text-3xl font-semibold ">
               Create your tasks
@@ -98,7 +112,11 @@ const TaskModal = () => {
 
             {/* Buttons  */}
             <div className="flex justify-between">
-              <button className="text-xl bg-red-600 px-4 py-3 rounded-md">
+            <button
+                type="button"
+                onClick={() => handleClose(false)}  // Correct way to close modal
+                className="text-xl bg-red-600 px-4 py-3 rounded-md"
+              >
                 Close
               </button>
 
