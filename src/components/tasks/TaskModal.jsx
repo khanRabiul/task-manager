@@ -21,7 +21,7 @@ const TaskModal = () => {
     setTask({ ...task, [name]: value });
   };
   return (
-    <section className="flex justify-center h-screen items-center bg-gray-700 bg-opacity-80">
+    <section className="fixed inset-0 flex justify-center h-screen items-center bg-gray-700 bg-opacity-80 z-50">
       <div className="bg-slate-800 rounded-md w-full p-4 md:p-8 md:w-2/3">
         <form>
           <div className="mb-10">
@@ -113,6 +113,7 @@ const TaskModal = () => {
         </form>
       </div>
     </section>
+    
   );
 };
 

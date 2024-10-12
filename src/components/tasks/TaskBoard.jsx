@@ -1,4 +1,13 @@
+import { useState } from "react";
+import TaskModal from "./TaskModal";
+
 const TaskBoard = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleModal = (open) => {
+    setIsModalOpen(open)
+  }
+
   return (
     <main className="mt-48">
       <h1 className="text-center text-3xl font-semibold capitalize">
@@ -29,7 +38,9 @@ const TaskBoard = () => {
           </table>
           {/* Buttons  */}
           <div>
-          <button className="px-12 py-2 bg-green-800 rounded-md font-semibold text-lg mr-8">
+          <button className="px-12 py-2 bg-green-800 rounded-md font-semibold text-lg mr-8"
+          onClick={()=> handleModal(true)}
+          >
             Add Task
           </button>
           <button className="px-12 py-2 bg-red-600 rounded-md font-semibold text-lg">
@@ -38,6 +49,8 @@ const TaskBoard = () => {
           </div>
         </div>
       </div>
+      {isModalOpen && <TaskModal onClose={() => handleModal(false)} />}
+
     </main>
   );
 };
